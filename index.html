@@ -3,7 +3,16 @@
  <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Calma - Psicoterapia Online</title>
+  
+  <title>Calma - Psicoterapia Online Feminista</title>
+  <meta name="description" content="Psicoterapia online con perspectiva feminista. Un espacio seguro para florecer a tu propio ritmo, estés donde estés.">
+  <meta property="og:title" content="Calma - Psicoterapia Online">
+  <meta property="og:description" content="Terapia online feminista, interseccional y respetuosa. Agenda tu cita.">
+  <meta property="og:image" content="https://i.imgur.com/SpoRURl.png">
+  <meta property="og:type" content="website">
+  
+  <link rel="icon" type="image/png" href="https://i.imgur.com/SpoRURl.png">
+
   <script src="/_sdk/element_sdk.js"></script>
   <script src="https://cdn.tailwindcss.com"></script>
   <style>
@@ -54,17 +63,38 @@
     .footer-legal-links a:hover { color: #e8956b; }
 
     /* ONLINE BADGE STYLE */
-    .online-badge {
-      display: inline-block;
-      padding: 0.5rem 1.5rem;
-      background: rgba(122, 184, 153, 0.15);
-      color: #2d5f4f;
-      border-radius: 50px;
-      font-weight: 600;
-      font-size: 0.9rem;
-      margin-bottom: 1.5rem;
-      border: 1px solid rgba(122, 184, 153, 0.3);
+    .online-badge { display: inline-block; padding: 0.5rem 1.5rem; background: rgba(122, 184, 153, 0.15); color: #2d5f4f; border-radius: 50px; font-weight: 600; font-size: 0.9rem; margin-bottom: 1.5rem; border: 1px solid rgba(122, 184, 153, 0.3); }
+    
+    /* PRICING CARD STYLE */
+    .price-card { background: white; border-radius: 1.5rem; padding: 2.5rem; box-shadow: 0 10px 40px rgba(0,0,0,0.06); transition: transform 0.3s ease; border: 1px solid rgba(0,0,0,0.05); display: flex; flex-direction: column; }
+    .price-card:hover { transform: translateY(-5px); }
+    .price-amount { font-size: 2.5rem; font-weight: bold; color: #e8956b; margin: 1rem 0; }
+    .price-period { font-size: 1rem; color: #666; font-weight: normal; }
+    
+    .info-btn {
+        display: inline-block;
+        margin-top: 2rem;
+        padding: 1rem 2rem;
+        background: transparent;
+        border: 2px solid #7ab899;
+        color: #7ab899;
+        font-weight: 600;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: all 0.3s;
+        font-size: 1rem;
     }
+    .info-btn:hover { background: #7ab899; color: white; }
+    
+    /* MODAL LIST STYLES */
+    .modal-list li { margin-bottom: 0.8rem; line-height: 1.6; }
+    .modal-subtitle { color: #e8956b; font-size: 1.25rem; margin-top: 2rem; margin-bottom: 1rem; font-weight: bold; border-bottom: 2px solid rgba(232, 149, 107, 0.2); padding-bottom: 0.5rem; }
+    
+    /* FAQ STYLES (Opción B) */
+    .faq-item { background: white; border-radius: 1rem; padding: 1.5rem; margin-bottom: 1rem; box-shadow: 0 4px 15px rgba(0,0,0,0.03); border: 1px solid rgba(0,0,0,0.05); transition: all 0.3s; }
+    .faq-item:hover { transform: translateX(5px); border-left: 4px solid #e8956b; }
+    .faq-question { font-weight: bold; font-size: 1.1rem; color: #2d5f4f; margin-bottom: 0.5rem; }
+    .faq-answer { font-size: 1rem; line-height: 1.6; color: #555; }
   </style>
   <style>@view-transition { navigation: auto; }</style>
   <script src="/_sdk/data_sdk.js" type="text/javascript"></script>
@@ -90,7 +120,12 @@
         Calma
        </div>
       </div>
-      <div style="display: flex; gap: 2.5rem;"><a href="#inicio" id="nav-link-1" class="nav-link-underline" style="text-decoration: none; transition: all 0.3s; font-weight: 500;">Inicio</a> <a href="#servicios" id="nav-link-2" class="nav-link-underline" style="text-decoration: none; transition: all 0.3s; font-weight: 500;">Servicios</a> <a href="#nosotras" id="nav-link-3" class="nav-link-underline" style="text-decoration: none; transition: all 0.3s; font-weight: 500;">Nosotras</a> <a href="#enfoque" id="nav-link-4" class="nav-link-underline" style="text-decoration: none; transition: all 0.3s; font-weight: 500;">Enfoque</a> <a href="#contacto" id="nav-link-5" class="nav-link-underline" style="text-decoration: none; transition: all 0.3s; font-weight: 500;">Contacto</a>
+      <div style="display: flex; gap: 2.5rem;">
+          <a href="#inicio" id="nav-link-1" class="nav-link-underline" style="text-decoration: none; transition: all 0.3s; font-weight: 500;">Inicio</a> 
+          <a href="#servicios" id="nav-link-2" class="nav-link-underline" style="text-decoration: none; transition: all 0.3s; font-weight: 500;">Servicios</a> 
+          <a href="#tarifas" id="nav-link-6" class="nav-link-underline" style="text-decoration: none; transition: all 0.3s; font-weight: 500;">Tarifas</a>
+          <a href="#nosotras" id="nav-link-3" class="nav-link-underline" style="text-decoration: none; transition: all 0.3s; font-weight: 500;">Nosotras</a> 
+          <a href="#contacto" id="nav-link-5" class="nav-link-underline" style="text-decoration: none; transition: all 0.3s; font-weight: 500;">Contacto</a>
       </div>
      </div>
     </div>
@@ -104,69 +139,128 @@
     
     <div style="max-width: 900px; margin: 0 auto; position: relative; z-index: 1;">
      <div class="pulse-ring" style="width: 150px; height: 150px; margin: 0 auto 2rem; position: relative;"><img src="https://i.imgur.com/SpoRURl.png" alt="Calma Logo" width="150" height="150" style="display: block; object-fit: contain;"></div>
-     
      <div class="online-badge">✨ Consulta 100% Online · Desde donde estés</div>
-     
      <h1 id="main-title" class="gradient-text" style="font-size: 4.5rem; font-weight: bold; margin-bottom: 0.5rem; letter-spacing: -1px;">Calma</h1>
      <div class="divider-line"></div>
      <p id="subtitle" style="font-size: 1.75rem; margin-bottom: 2rem; font-weight: 500;">Psicoterapia Online & Feminista</p>
-     <p id="hero-description" style="font-size: 1.25rem; margin-bottom: 3rem; line-height: 1.9; max-width: 700px; margin-left: auto; margin-right: auto;">Un espacio seguro virtual para florecer a tu propio ritmo. Trabajamos desde una perspectiva feminista que te acompaña estés donde estés. Tu bienestar emocional, sin fronteras.</p>
+     <p id="hero-description" style="font-size: 1.25rem; margin-bottom: 3rem; line-height: 1.9; max-width: 700px; margin-left: auto; margin-right: auto;">Un espacio seguro virtual para florecer a tu propio ritmo. Trabajamos desde una perspectiva feminista que te acompaña en tus crisis vitales, identidad y relaciones.</p>
      <a href="#contacto" id="cta-button" style="display: inline-block; padding: 1.25rem 3rem; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 1.125rem; transition: all 0.4s; box-shadow: 0 8px 20px rgba(232, 149, 107, 0.3); transform: translateY(0);"> Reserva tu Videollamada ✨ </a>
     </div>
    </header>
    
    <section id="servicios" class="pattern-dots" style="padding: 6rem 1.5rem; position: relative;">
     <div style="max-width: 1200px; margin: 0 auto; position: relative; z-index: 1;">
-     <h2 id="services-title" class="gradient-text" style="font-size: 3rem; font-weight: bold; text-align: center; margin-bottom: 0.5rem;">Nuestros Servicios</h2>
+     <h2 id="services-title" class="gradient-text" style="font-size: 3rem; font-weight: bold; text-align: center; margin-bottom: 0.5rem;">Problemas Abordados</h2>
      <div class="divider-line"></div>
-     <p style="text-align: center; font-size: 1.125rem; margin-bottom: 1rem; opacity: 0.8; max-width: 600px; margin-left: auto; margin-right: auto;">Terapia personalizada y especializada para acompañarte en tu camino</p>
+     <p style="text-align: center; font-size: 1.125rem; margin-bottom: 1rem; opacity: 0.8; max-width: 600px; margin-left: auto; margin-right: auto;">Te acompañamos en diferentes procesos desde la empatía y la profesionalidad</p>
      <p style="text-align: center; font-size: 1rem; margin-bottom: 4rem; color: #e8956b; font-weight: 600;">💻 Todas las sesiones se realizan mediante plataforma segura de videollamada</p>
-
      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2.5rem;">
       <div class="service-card hover-lift" style="padding: 3rem; border-radius: 1.5rem; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); position: relative;">
        <div class="service-card-content">
-        <div style="width: 70px; height: 70px; margin-bottom: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.15) 0%, rgba(122, 184, 153, 0.15) 100%);">💚</div>
-        <h3 class="service-title" style="font-size: 1.625rem; font-weight: 700; margin-bottom: 1rem;">Terapia Individual</h3>
-        <p class="service-description" style="line-height: 1.8; font-size: 1.05rem;">Sesiones online personalizadas enfocadas en tu proceso de autoconocimiento, sanación y empoderamiento.</p>
+        <div style="width: 70px; height: 70px; margin-bottom: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.15) 0%, rgba(122, 184, 153, 0.15) 100%);">🌱</div>
+        <h3 class="service-title" style="font-size: 1.625rem; font-weight: 700; margin-bottom: 1rem;">Crisis Vitales</h3>
+        <p class="service-description" style="line-height: 1.8; font-size: 1.05rem;">Apoyo en momentos de cambio, duelo, incertidumbre o malestar emocional profundo para recuperar tu equilibrio.</p>
        </div>
       </div>
       <div class="service-card hover-lift" style="padding: 3rem; border-radius: 1.5rem; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); position: relative;">
        <div class="service-card-content">
         <div style="width: 70px; height: 70px; margin-bottom: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.15) 0%, rgba(122, 184, 153, 0.15) 100%);">🌈</div>
-        <h3 class="service-title" style="font-size: 1.625rem; font-weight: 700; margin-bottom: 1rem;">Diversidad Sexual</h3>
-        <p class="service-description" style="line-height: 1.8; font-size: 1.05rem;">Acompañamiento especializado en procesos de identidad de género y orientación sexual.</p>
+        <h3 class="service-title" style="font-size: 1.625rem; font-weight: 700; margin-bottom: 1rem;">Identidad y Diversidad</h3>
+        <p class="service-description" style="line-height: 1.8; font-size: 1.05rem;">Acompañamiento en malestares vinculados con la identidad de género y/o la orientación sexual. Enfoque LGTBIQ+ afirmativo.</p>
        </div>
       </div>
       <div class="service-card hover-lift" style="padding: 3rem; border-radius: 1.5rem; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); position: relative;">
        <div class="service-card-content">
-        <div style="width: 70px; height: 70px; margin-bottom: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.15) 0%, rgba(122, 184, 153, 0.15) 100%);">💫</div>
-        <h3 class="service-title" style="font-size: 1.625rem; font-weight: 700; margin-bottom: 1rem;">Relaciones No Monógamas</h3>
-        <p class="service-description" style="line-height: 1.8; font-size: 1.05rem;">Terapia virtual para personas y vínculos que exploran formas alternativas de relacionarse.</p>
+        <div style="width: 70px; height: 70px; margin-bottom: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.15) 0%, rgba(122, 184, 153, 0.15) 100%);">❤️‍🩹</div>
+        <h3 class="service-title" style="font-size: 1.625rem; font-weight: 700; margin-bottom: 1rem;">Experiencias Traumáticas</h3>
+        <p class="service-description" style="line-height: 1.8; font-size: 1.05rem;">Trabajo especializado en trauma para sanar heridas del pasado que impactan en tu presente.</p>
        </div>
       </div>
       <div class="service-card hover-lift" style="padding: 3rem; border-radius: 1.5rem; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); position: relative;">
        <div class="service-card-content">
-        <div style="width: 70px; height: 70px; margin-bottom: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.15) 0%, rgba(122, 184, 153, 0.15) 100%);">💕</div>
+        <div style="width: 70px; height: 70px; margin-bottom: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.15) 0%, rgba(122, 184, 153, 0.15) 100%);">🔗</div>
         <h3 class="service-title" style="font-size: 1.625rem; font-weight: 700; margin-bottom: 1rem;">Terapia de Pareja</h3>
-        <p class="service-description" style="line-height: 1.8; font-size: 1.05rem;">Espacio online para fortalecer la comunicación y resolver conflictos en todo tipo de vínculos.</p>
-       </div>
-      </div>
-      <div class="service-card hover-lift" style="padding: 3rem; border-radius: 1.5rem; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); position: relative;">
-       <div class="service-card-content">
-        <div style="width: 70px; height: 70px; margin-bottom: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.15) 0%, rgba(122, 184, 153, 0.15) 100%);">✊</div>
-        <h3 class="service-title" style="font-size: 1.625rem; font-weight: 700; margin-bottom: 1rem;">Perspectiva de Género</h3>
-        <p class="service-description" style="line-height: 1.8; font-size: 1.05rem;">Trabajamos las violencias machistas, roles de género y construcción de una identidad libre.</p>
-       </div>
-      </div>
-      <div class="service-card hover-lift" style="padding: 3rem; border-radius: 1.5rem; box-shadow: 0 8px 30px rgba(0, 0, 0, 0.08); position: relative;">
-       <div class="service-card-content">
-        <div style="width: 70px; height: 70px; margin-bottom: 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.15) 0%, rgba(122, 184, 153, 0.15) 100%);">🌸</div>
-        <h3 class="service-title" style="font-size: 1.625rem; font-weight: 700; margin-bottom: 1rem;">Talleres Virtuales</h3>
-        <p class="service-description" style="line-height: 1.8; font-size: 1.05rem;">Encuentros grupales online sobre autocuidado, sororidad, amor propio y salud mental.</p>
+        <p class="service-description" style="line-height: 1.8; font-size: 1.05rem;">Abordaje de problemas en las relaciones, comunicación y vínculos afectivos.</p>
        </div>
       </div>
      </div>
     </div>
+   </section>
+
+   <section id="tarifas" style="padding: 6rem 1.5rem; position: relative; background-color: #ffffff;">
+      <div style="max-width: 1100px; margin: 0 auto;">
+          <h2 class="gradient-text" style="font-size: 3rem; font-weight: bold; text-align: center; margin-bottom: 0.5rem;">Nuestras Tarifas</h2>
+          <div class="divider-line"></div>
+          <p style="text-align: center; font-size: 1.125rem; margin-bottom: 4rem; opacity: 0.8;">Precios claros y transparentes</p>
+
+          <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+              <div class="price-card">
+                  <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d5f4f;">Individual Estándar</h3>
+                  <div class="price-amount">70€ <span class="price-period">/ sesión</span></div>
+                  <ul style="list-style: none; padding: 0; margin-bottom: 2rem; flex: 1;">
+                      <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">⏱️ Duración: 50 a 60 min</li>
+                      <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">💻 Formato Online</li>
+                  </ul>
+                  <a href="#contacto" style="text-align: center; padding: 1rem; border-radius: 50px; background: #2d5f4f; color: white; text-decoration: none; font-weight: 600;">Agendar</a>
+              </div>
+
+              <div class="price-card" style="border: 2px solid #e8956b;">
+                  <div style="background: #e8956b; color: white; text-align: center; padding: 0.25rem; border-radius: 20px; font-size: 0.8rem; margin-bottom: 0.5rem; display: inline-block; width: fit-content;">Cupo limitado</div>
+                  <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d5f4f;">Individual Accesible</h3>
+                  <div class="price-amount">40€ <span class="price-period">/ sesión</span></div>
+                  <ul style="list-style: none; padding: 0; margin-bottom: 2rem; flex: 1;">
+                      <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">⏱️ Duración: 50 a 60 min</li>
+                      <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">⚖️ Se valora nivel de ingresos</li>
+                      <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">⚠️ Máximo 3 casos por psicóloga</li>
+                      <li style="padding: 0.5rem 0; font-size: 0.9rem; color: #666;">*Ligado a disponibilidad</li>
+                  </ul>
+                  <a href="#contacto" style="text-align: center; padding: 1rem; border-radius: 50px; background: #e8956b; color: white; text-decoration: none; font-weight: 600;">Consultar Disponibilidad</a>
+              </div>
+
+              <div class="price-card">
+                  <h3 style="font-size: 1.5rem; font-weight: 700; color: #2d5f4f;">Terapia de Pareja</h3>
+                  <div class="price-amount">90€ <span class="price-period">/ sesión</span></div>
+                  <ul style="list-style: none; padding: 0; margin-bottom: 2rem; flex: 1;">
+                      <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">⏱️ Duración: 1h 15 min</li>
+                      <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">💻 Formato Online</li>
+                      <li style="padding: 0.5rem 0; border-bottom: 1px solid #f0f0f0;">🤝 Trabajo vincular</li>
+                  </ul>
+                  <a href="#contacto" style="text-align: center; padding: 1rem; border-radius: 50px; background: #2d5f4f; color: white; text-decoration: none; font-weight: 600;">Agendar</a>
+              </div>
+          </div>
+          
+          <div style="text-align: center;">
+              <button class="info-btn" onclick="openModal('modal-pagos')">
+                  ℹ️ Información de Pagos y Política de Cancelación
+              </button>
+          </div>
+      </div>
+   </section>
+   
+   <section id="faq" style="padding: 6rem 1.5rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.05) 0%, rgba(122, 184, 153, 0.05) 100%);">
+       <div style="max-width: 800px; margin: 0 auto;">
+           <h2 class="gradient-text" style="font-size: 2.5rem; font-weight: bold; text-align: center; margin-bottom: 3rem;">Preguntas Frecuentes</h2>
+           
+           <div class="faq-item">
+               <div class="faq-question">¿Es igual de efectiva la terapia online?</div>
+               <div class="faq-answer">Sí, numerosos estudios avalan que la psicoterapia online tiene la misma eficacia clínica que la presencial. Utilizamos técnicas adaptadas para crear un vínculo cercano y seguro a través de la pantalla.</div>
+           </div>
+           
+           <div class="faq-item">
+               <div class="faq-question">¿Qué necesito para las sesiones?</div>
+               <div class="faq-answer">Solo necesitas un dispositivo (ordenador, tablet o móvil) con cámara y micrófono, una conexión a internet estable y, lo más importante, un lugar privado donde puedas hablar con libertad.</div>
+           </div>
+           
+           <div class="faq-item">
+               <div class="faq-question">¿Cómo se garantiza la privacidad?</div>
+               <div class="faq-answer">Utilizamos plataformas de videollamada encriptadas y seguras. Nos regimos por el secreto profesional y la normativa de protección de datos (RGPD) igual que en una consulta física.</div>
+           </div>
+           
+           <div class="faq-item">
+               <div class="faq-question">¿Cómo hago el pago de las sesiones?</div>
+               <div class="faq-answer">El pago se realiza mediante transferencia bancaria antes de la sesión. Tienes todos los detalles y el número de cuenta en el botón de "Información de Pagos" de la sección Tarifas.</div>
+           </div>
+       </div>
    </section>
    
    <section id="nosotras" style="padding: 6rem 1.5rem; position: relative; overflow: hidden;">
@@ -174,76 +268,45 @@
     <div style="max-width: 1100px; margin: 0 auto; position: relative; z-index: 1;">
      <h2 id="about-title" class="gradient-text" style="font-size: 3rem; font-weight: bold; text-align: center; margin-bottom: 0.5rem;">Quiénes Somos</h2>
      <div class="divider-line"></div>
-     <div style="padding: 4rem 3rem; border-radius: 2rem; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08); border: 2px solid rgba(232, 149, 107, 0.1); margin-top: 3rem;">
-      <p id="about-text-1" style="font-size: 1.25rem; line-height: 2; margin-bottom: 2rem; font-weight: 400;">En Calma, creemos que la terapia es como cultivar un jardín interior. Somos un equipo de psicólogas que acompaña de forma 100% online desde una mirada feminista, interseccional y profundamente respetuosa.</p>
-      <p id="about-text-2" style="font-size: 1.25rem; line-height: 2; margin-bottom: 2rem; font-weight: 400;">Cada persona es única. Gracias a la tecnología, podemos conectar contigo estés donde estés, eliminando barreras y creando un vínculo cercano a través de la pantalla.</p>
-      <p id="about-text-3" style="font-size: 1.25rem; line-height: 2; font-weight: 400;">Porque sanar no es una línea recta, es un camino de curvas, pausas y nuevos comienzos. Estamos aquí para acompañarte en cada paso.</p>
-     </div>
-     <div class="testimonial-card" style="margin-top: 4rem; padding: 3.5rem; border-radius: 2rem; position: relative; overflow: hidden; border-left: 6px solid;">
-      <div style="font-family: Georgia, serif; font-size: 5rem; line-height: 0; opacity: 0.15; position: absolute; top: 2rem; left: 2rem;">"</div>
-      <p id="testimonial-text" style="font-size: 1.5rem; line-height: 2; font-style: italic; text-align: center; margin: 2rem 0; position: relative; z-index: 1; font-weight: 400;">La terapia es el arte de hacer espacio para que crezcas, para que te reconozcas, para que te permitas ser exactamente quien eres.</p>
-      <div style="font-family: Georgia, serif; font-size: 5rem; line-height: 0; opacity: 0.15; position: absolute; bottom: 1rem; right: 2rem; transform: rotate(180deg);">"</div>
-     </div>
-    </div>
-   </section>
-   
-   <section id="enfoque" style="padding: 6rem 1.5rem; position: relative;">
-    <div style="max-width: 1200px; margin: 0 auto;">
-     <h2 id="approach-title" class="gradient-text" style="font-size: 3rem; font-weight: bold; text-align: center; margin-bottom: 0.5rem;">Nuestro Enfoque</h2>
-     <div class="divider-line"></div>
-     <p style="text-align: center; font-size: 1.125rem; margin-bottom: 4rem; opacity: 0.8; max-width: 600px; margin-left: auto; margin-right: auto;">Los pilares que guían nuestro trabajo terapéutico</p>
-     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 3rem;">
-      <div style="text-align: center; padding: 2.5rem;">
-       <div class="approach-icon" style="width: 90px; height: 90px; margin: 0 auto 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; background: linear-gradient(135deg, #e8956b 0%, #f4c8a8 100%); color: white; box-shadow: 0 8px 25px rgba(232, 149, 107, 0.3);">F</div>
-       <h3 class="approach-subtitle" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Feminista</h3>
-       <p class="approach-description" style="line-height: 1.8; font-size: 1.05rem;">Cuestionamos las estructuras patriarcales y trabajamos por tu empoderamiento y autonomía.</p>
-      </div>
-      <div style="text-align: center; padding: 2.5rem;">
-       <div class="approach-icon" style="width: 90px; height: 90px; margin: 0 auto 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; background: linear-gradient(135deg, #7ab899 0%, #a8d5ba 100%); color: white; box-shadow: 0 8px 25px rgba(122, 184, 153, 0.3);">I</div>
-       <h3 class="approach-subtitle" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Interseccional</h3>
-       <p class="approach-description" style="line-height: 1.8; font-size: 1.05rem;">Reconocemos la diversidad de experiencias según género, clase, raza y orientación sexual.</p>
-      </div>
-      <div style="text-align: center; padding: 2.5rem;">
-       <div class="approach-icon" style="width: 90px; height: 90px; margin: 0 auto 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; background: linear-gradient(135deg, #e8956b 0%, #7ab899 100%); color: white; box-shadow: 0 8px 25px rgba(232, 149, 107, 0.3);">R</div>
-       <h3 class="approach-subtitle" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Respetuoso</h3>
-       <p class="approach-description" style="line-height: 1.8; font-size: 1.05rem;">Creamos un espacio libre de prejuicios donde puedes ser quien realmente eres.</p>
-      </div>
-      <div style="text-align: center; padding: 2.5rem;">
-       <div class="approach-icon" style="width: 90px; height: 90px; margin: 0 auto 1.5rem; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 2.5rem; font-weight: bold; background: linear-gradient(135deg, #a8d5ba 0%, #e8956b 100%); color: white; box-shadow: 0 8px 25px rgba(122, 184, 153, 0.3);">P</div>
-       <h3 class="approach-subtitle" style="font-size: 1.5rem; font-weight: 700; margin-bottom: 1rem;">Profesional</h3>
-       <p class="approach-description" style="line-height: 1.8; font-size: 1.05rem;">Utilizamos técnicas terapéuticas respaldadas científicamente adaptadas a tu contexto único.</p>
-      </div>
+     <p style="text-align: center; font-size: 1.25rem; max-width: 800px; margin: 0 auto 4rem; line-height: 1.8;">Somos un equipo unido por una <strong>perspectiva feminista</strong>. Creemos que lo personal es político y que la terapia debe ser un espacio que valide tu experiencia en el mundo.</p>
+     <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); gap: 3rem;">
+         <div style="background: rgba(255,255,255,0.8); padding: 3rem; border-radius: 2rem; border-left: 5px solid #e8956b; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+             <h3 class="gradient-text" style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">Marta</h3>
+             <p style="font-style: italic; color: #666; margin-bottom: 1.5rem;">Psicóloga</p>
+             <p style="line-height: 1.8; font-size: 1.1rem; color: #2d5f4f;">
+                 Especializada en <strong>Terapia Gestalt</strong> y en <strong>Diversidad Sexual y de Género</strong> con enfoque LGTBIQ+ afirmativo. <br><br>
+                 Mi trabajo se centra en acompañarte a explorar quién eres desde una mirada libre de juicios, poniendo el foco en el presente y en la toma de conciencia.
+             </p>
+         </div>
+         <div style="background: rgba(255,255,255,0.8); padding: 3rem; border-radius: 2rem; border-left: 5px solid #7ab899; box-shadow: 0 10px 30px rgba(0,0,0,0.05);">
+             <h3 class="gradient-text" style="font-size: 2rem; font-weight: bold; margin-bottom: 0.5rem;">Noelia</h3>
+             <p style="font-style: italic; color: #666; margin-bottom: 1.5rem;">Psicoterapeuta</p>
+             <p style="line-height: 1.8; font-size: 1.1rem; color: #2d5f4f;">
+                 Especializada en <strong>Terapia Sistémica</strong> con perspectiva feminista y experta en <strong>Trauma</strong>. <br><br>
+                 Entiendo los problemas no como hechos aislados, sino conectados a tus relaciones y contexto. Trabajaremos para sanar las heridas profundas y reconstruir vínculos sanos.
+             </p>
+         </div>
      </div>
     </div>
    </section>
    
    <section id="horarios" style="padding: 6rem 1.5rem; position: relative;">
     <div style="max-width: 900px; margin: 0 auto; text-align: center;">
-     <h2 id="schedule-title" class="gradient-text" style="font-size: 3rem; font-weight: bold; margin-bottom: 0.5rem;">Horarios de Atención</h2>
+     <h2 id="schedule-title" class="gradient-text" style="font-size: 3rem; font-weight: bold; margin-bottom: 0.5rem;">Horarios</h2>
      <div class="divider-line"></div>
-     <div style="padding: 4rem 3rem; border-radius: 2rem; box-shadow: 0 15px 50px rgba(0, 0, 0, 0.08); margin-top: 3rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.03) 0%, rgba(122, 184, 153, 0.03) 100%);">
-      
-      <div style="margin-bottom: 2rem;">
-        <span style="background: white; padding: 0.75rem 2rem; border-radius: 50px; border: 1px solid #7ab899; color: #2d5f4f; font-weight: 600; box-shadow: 0 5px 15px rgba(0,0,0,0.05);">
-            💻 Videollamada (Psypocket)
-        </span>
-      </div>
-
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem; margin-bottom: 2rem;">
-       <div style="padding: 2rem; border-radius: 1rem; background: rgba(255, 255, 255, 0.7);">
-        <div style="font-size: 2.5rem; margin-bottom: 1rem;">📅</div>
-        <p class="schedule-day" style="font-weight: 700; margin-bottom: 0.75rem; font-size: 1.125rem;">Lunes a Viernes</p>
-        <p class="schedule-time" style="font-size: 1.5rem; font-weight: 600;">9:00 - 20:00</p>
-        <p style="font-size: 0.9rem; opacity: 0.7;">(Hora España Peninsular)</p>
+     <div style="padding: 3rem; border-radius: 2rem; background: linear-gradient(135deg, rgba(232, 149, 107, 0.03) 0%, rgba(122, 184, 153, 0.03) 100%);">
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 2.5rem;">
+       <div>
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">📅</div>
+        <p class="schedule-day" style="font-weight: 700;">Lunes a Viernes</p>
+        <p class="schedule-time" style="font-size: 1.25rem;">9:00 - 20:00</p>
        </div>
-       <div style="padding: 2rem; border-radius: 1rem; background: rgba(255, 255, 255, 0.7);">
-        <div style="font-size: 2.5rem; margin-bottom: 1rem;">🌅</div>
-        <p class="schedule-day" style="font-weight: 700; margin-bottom: 0.75rem; font-size: 1.125rem;">Sábados</p>
-        <p class="schedule-time" style="font-size: 1.5rem; font-weight: 600;">10:00 - 14:00</p>
-        <p style="font-size: 0.9rem; opacity: 0.7;">(Hora España Peninsular)</p>
+       <div>
+        <div style="font-size: 2rem; margin-bottom: 0.5rem;">🌅</div>
+        <p class="schedule-day" style="font-weight: 700;">Sábados</p>
+        <p class="schedule-time" style="font-size: 1.25rem;">10:00 - 14:00</p>
        </div>
       </div>
-      
      </div>
     </div>
    </section>
@@ -289,10 +352,62 @@
     <div class="footer-legal-links" style="margin-bottom: 1.5rem;">
       <a onclick="openModal('modal-aviso')">Aviso Legal</a> |
       <a onclick="openModal('modal-privacidad')">Política de Privacidad</a> |
-      <a onclick="openModal('modal-cookies')">Política de Cookies</a>
+      <a onclick="openModal('modal-cookies')">Cookies</a> |
+      <a onclick="openModal('modal-pagos')">Condiciones</a> |
+      <a onclick="openModal('modal-reclamaciones')" style="color: #e8956b;">Hoja de Reclamaciones</a>
     </div>
-    <p id="footer-text" style="font-size: 1rem; opacity: 0.7;">© 2024 Calma. Un espacio seguro online para todas las identidades. 🌿✨</p>
+    <p id="footer-text" style="font-size: 1rem; opacity: 0.7;">© 2024 Calma. Un espacio seguro online. <br> Contacto: calmainfo@gmail.com | Instagram: @calma_psicoterapia</p>
    </footer>
+  </div>
+
+  <div id="modal-pagos" class="legal-modal">
+      <div class="modal-content">
+          <span class="close-modal" onclick="closeModal('modal-pagos')">&times;</span>
+          <h2>Información de Pagos y Cancelaciones</h2>
+          <p>En Calma, creemos que la claridad es fundamental para el cuidado mutuo. Aquí detallamos nuestras condiciones de servicio:</p>
+          
+          <h3 class="modal-subtitle">Método de Pago</h3>
+          <p>Los pagos se realizan mediante transferencia bancaria. Agradecemos que se efectúe el pago dentro de las <strong>24 horas previas a la sesión</strong>.</p>
+          <div style="background: #f9f9f9; padding: 1.5rem; border-radius: 10px; margin: 1rem 0;">
+              <ul class="modal-list" style="list-style: none; padding: 0;">
+                  <li><strong>Titular:</strong> CALMA PSICOTERAPIA</li>
+                  <li><strong>IBAN:</strong> ES91 0000 1234 5678 9012 3456</li>
+                  <li><strong>Concepto:</strong> Nombre Terapeuta + Tu Nombre + Fecha Sesión</li>
+              </ul>
+          </div>
+          <p style="font-size: 0.9rem; opacity: 0.8;">*Si necesitas factura, por favor envíanos tus datos fiscales a calmainfo@gmail.com</p>
+
+          <h3 class="modal-subtitle">Compromiso y Cancelaciones</h3>
+          <p>Entendemos que la vida tiene imprevistos. Sin embargo, las citas canceladas con poco margen tienen un coste operativo y afectan a otras personas que esperan ser atendidas. Apelamos a la responsabilidad compartida con las siguientes políticas:</p>
+          <ul class="modal-list">
+              <li>✅ <strong>Más de 48 horas:</strong> Si avisas con más de 48h de antelación, o por causa de fuerza mayor justificada (enfermedad, accidente), no se cobrará la sesión.</li>
+              <li>⚠️ <strong>Menos de 48 horas:</strong> En cancelaciones con menos de 48h, se cobrará el <strong>50% de la sesión</strong>, ya que no podemos reorganizar la agenda con tan poco margen.</li>
+              <li>❌ <strong>Mismo día o No Asistencia:</strong> Si se avisa el mismo día o no te presentas, se cobrará la <strong>sesión completa</strong>.</li>
+          </ul>
+
+          <h3 class="modal-subtitle">Compromiso Terapéutico</h3>
+          <ul class="modal-list">
+              <li>Si se anulan <strong>3 sesiones seguidas</strong>, el equipo podrá valorar la finalización del proceso terapéutico.</li>
+              <li>Si se pausa la terapia sin aviso y no hay comunicación durante más de <strong>8 semanas</strong>, se podrá dar por finalizado el proceso.</li>
+          </ul>
+      </div>
+  </div>
+
+  <div id="modal-reclamaciones" class="legal-modal">
+    <div class="modal-content">
+      <span class="close-modal" onclick="closeModal('modal-reclamaciones')">&times;</span>
+      <h2>Hoja de Reclamaciones</h2>
+      <p>En cumplimiento de la normativa vigente de protección a los consumidores y usuarios, disponemos de Hojas de Reclamaciones a disposición de quien las solicite.</p>
+      
+      <h3 class="modal-subtitle">¿Cómo reclamar?</h3>
+      <p>Si desea presentar una reclamación, puede descargar el formulario oficial, rellenarlo y enviárnoslo a <strong>calmainfo@gmail.com</strong>.</p>
+      
+      <div style="text-align: center; margin-top: 2rem;">
+          <a href="#" onclick="alert('Esta es una simulación de descarga para el trabajo de clase.')" style="padding: 1rem 2rem; background: #2d5f4f; color: white; text-decoration: none; border-radius: 50px; font-weight: bold;">📥 Descargar Hoja Oficial (.pdf)</a>
+      </div>
+      
+      <p style="margin-top: 2rem; font-size: 0.9rem; color: #666;">También puede presentar su reclamación directamente ante los organismos de consumo de su Comunidad Autónoma.</p>
+    </div>
   </div>
 
   <div id="modal-aviso" class="legal-modal">
@@ -304,8 +419,8 @@
       <ul>
         <li><strong>Titular:</strong> [NOMBRE O RAZÓN SOCIAL DEL TITULAR]</li>
         <li><strong>NIF/CIF:</strong> [AÑADIR CIF O DNI]</li>
-        <li><strong>Domicilio Fiscal:</strong> [AÑADIR DIRECCIÓN COMPLETA - Obligatorio legalmente aunque el servicio sea online]</li>
-        <li><strong>Email:</strong> [AÑADIR EMAIL]</li>
+        <li><strong>Domicilio Fiscal:</strong> [AÑADIR DIRECCIÓN COMPLETA]</li>
+        <li><strong>Email:</strong> calmainfo@gmail.com</li>
         <li><strong>Teléfono:</strong> [AÑADIR TELÉFONO]</li>
       </ul>
       <h3>Condiciones de Uso</h3>
@@ -336,7 +451,7 @@
         <li><strong>Portabilidad:</strong> Recibir sus datos en formato estructurado.</li>
         <li><strong>Oposición:</strong> Oponerse al tratamiento.</li>
       </ul>
-      <p>Para ello, envíe un email a [EMAIL DE CONTACTO].</p>
+      <p>Para ello, envíe un email a calmainfo@gmail.com.</p>
     </div>
   </div>
 
@@ -367,7 +482,7 @@
       font_size: 16,
       main_title: "Calma",
       subtitle: "Psicoterapia Online Feminista",
-      services_title: "Nuestros Servicios",
+      services_title: "Problemas Abordados",
       about_title: "Quiénes Somos",
       contact_title: "Agenda tu Cita"
     };
@@ -433,11 +548,13 @@
       navLogo.style.fontFamily = `${fontFamily}, serif`;
       navLogo.style.fontSize = `${fontSize * 1.75}px`;
 
-      const navLinks = [document.getElementById('nav-link-1'), document.getElementById('nav-link-2'), document.getElementById('nav-link-3'), document.getElementById('nav-link-4'), document.getElementById('nav-link-5')];
+      const navLinks = [document.getElementById('nav-link-1'), document.getElementById('nav-link-2'), document.getElementById('nav-link-3'), document.getElementById('nav-link-4'), document.getElementById('nav-link-5'), document.getElementById('nav-link-6')];
       navLinks.forEach(link => {
-        link.style.color = textColor;
-        link.style.fontFamily = `${fontFamily}, serif`;
-        link.style.fontSize = `${fontSize}px`;
+        if(link) {
+            link.style.color = textColor;
+            link.style.fontFamily = `${fontFamily}, serif`;
+            link.style.fontSize = `${fontSize}px`;
+        }
       });
 
       const heroSection = document.getElementById('inicio');
@@ -492,25 +609,12 @@
       aboutTitle.style.fontFamily = `${fontFamily}, serif`;
       aboutTitle.style.fontSize = `${fontSize * 3}px`;
 
-      const aboutTexts = [document.getElementById('about-text-1'), document.getElementById('about-text-2'), document.getElementById('about-text-3')];
-      aboutTexts.forEach(text => { text.style.color = textColor; text.style.fontFamily = `${fontFamily}, serif`; text.style.fontSize = `${fontSize * 1.25}px`; });
-      aboutTexts[0].parentElement.style.backgroundColor = bgColor;
-      aboutTexts[0].parentElement.style.borderColor = `${primaryColor}1a`;
-
       const testimonialBox = document.getElementById('testimonial-text').parentElement;
       testimonialBox.style.borderLeftColor = primaryColor;
       const testimonialText = document.getElementById('testimonial-text');
       testimonialText.style.color = textColor;
       testimonialText.style.fontFamily = `${fontFamily}, serif`;
       testimonialText.style.fontSize = `${fontSize * 1.5}px`;
-
-      const approachSection = document.getElementById('enfoque');
-      approachSection.style.backgroundColor = bgColor;
-      const approachTitle = document.getElementById('approach-title');
-      approachTitle.style.fontFamily = `${fontFamily}, serif`;
-      approachTitle.style.fontSize = `${fontSize * 3}px`;
-      document.querySelectorAll('.approach-subtitle').forEach(subtitle => { subtitle.style.color = textColor; subtitle.style.fontFamily = `${fontFamily}, serif`; subtitle.style.fontSize = `${fontSize * 1.5}px`; });
-      document.querySelectorAll('.approach-description').forEach(desc => { desc.style.color = textColor; desc.style.fontFamily = `${fontFamily}, serif`; desc.style.fontSize = `${fontSize * 1.05}px`; });
 
       const scheduleSection = document.getElementById('horarios');
       scheduleSection.style.backgroundColor = surfaceColor;
